@@ -15,7 +15,6 @@ const Services = () => {
         fetch('http://localhost:5000/collection')
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 setCollection(data);
             })
     }, [])

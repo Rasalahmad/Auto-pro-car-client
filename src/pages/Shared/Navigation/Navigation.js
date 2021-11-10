@@ -37,6 +37,9 @@ const Navigation = () => {
                     <NavLink style={{ textDecoration: 'none', color: '#fff' }} to='/review'>
                         <Button color="inherit">Reviews</Button>
                     </NavLink>
+                    <NavLink style={{ textDecoration: 'none', color: '#fff' }} to='/dashboard'>
+                        <Button color="inherit">Dashboard</Button>
+                    </NavLink>
                     <NavLink style={{ textDecoration: 'none', color: '#fff' }} to='/login'>
                         <Button color="inherit">Login</Button>
                     </NavLink>
