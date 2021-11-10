@@ -9,7 +9,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import { NavLink } from 'react-router-dom';
 
-const Services = () => {
+const Explore = () => {
     const [collection, setCollection] = useState([]);
     useEffect(() => {
         fetch('http://localhost:5000/collection')
@@ -25,11 +25,13 @@ const Services = () => {
             </Typography>
             <Grid container spacing={2}>
                 {
-                    collection.slice(0, 6).map(pd => <Grid
+                    collection.map(pd => <Grid
                         item xs={12} md={4}
                         key={pd._id
                         }
                     >
+                        {/* <img src={pd.img} width="100%" alt=""/>
+                        {pd.name} */}
                         <Card sx={{ maxWidth: 345 }}>
                             <CardMedia
                                 component="img"
@@ -61,4 +63,4 @@ const Services = () => {
     );
 };
 
-export default Services;
+export default Explore;

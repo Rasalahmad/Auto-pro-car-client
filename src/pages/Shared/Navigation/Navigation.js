@@ -13,7 +13,10 @@ const Navigation = () => {
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
                 <Toolbar>
-                    <IconButton
+                    <NavLink style={{ textDecoration: 'none', color: '#fff' }} to='/explore'>
+                        <Button color="inherit">Explore</Button>
+                    </NavLink>
+                    {/* <IconButton
                         size="large"
                         edge="start"
                         color="inherit"
@@ -21,7 +24,7 @@ const Navigation = () => {
                         sx={{ mr: 2 }}
                     >
                         <MenuIcon />
-                    </IconButton>
+                    </IconButton> */}
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                         AUTOPRO
                     </Typography>
