@@ -2,12 +2,14 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
 import Login from './pages/Authentication/Login/Login';
 import Register from './pages/Authentication/Register/Register';
+import CarDetails from './pages/Home/CarDetails/CarDetails';
 import Home from './pages/Home/Home/Home';
 import Review from './pages/Home/Review/Review';
 import Services from './pages/Home/Services/Services';
 import Technology from './pages/Home/Technology/Technology';
 import Footer from './pages/Shared/Footer/Footer';
 import Navigation from './pages/Shared/Navigation/Navigation';
+import NotFound from './pages/Shared/NotFound/NotFound';
 
 function App() {
   return (
@@ -24,6 +26,9 @@ function App() {
           <Route path='/services'>
           <Services></Services>
           </Route>
+          <Route path='/carDetails/:carId'>
+          <CarDetails></CarDetails>
+          </Route>
           <Route path='/technology'>
           <Technology></Technology>
           </Route>
@@ -35,6 +40,9 @@ function App() {
           </Route>
           <Route path='/login'>
           <Login></Login>
+          </Route>
+          <Route path='*'>
+          <NotFound></NotFound>
           </Route>
         </Switch>
         <Footer></Footer>

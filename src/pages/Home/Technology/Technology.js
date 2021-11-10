@@ -17,21 +17,21 @@ const Technology = () => {
     }, [])
 
     return (
-        <Box sx>
+        <Box sx={{my: '100px'}}>
             <Container/>
-            <Typography gutterBottom variant="h2" component="div">
+            <Typography gutterBottom variant="h2" sx={{fontWeight: 'bold', my: '100px'}} component="div">
                 TECHNOLOGY
             </Typography>
             <img src="http://autopro.jwsuperthemes.com/wp-content/uploads/2016/12/1111.jpg" alt="" />
-            <Grid container spacing={2}>
+            <Grid container spacing={2} sx={{mt: "50px"}}>
                 {
                     technology.map(tg => <Grid
                         key={tg._id}
                         item xs={12} md={4}
                     >
-                        <img src={tg.icon} width="200px" alt="" />
-                        <p>{tg.name}</p>
-                        <p>{tg.description}</p>
+                        <img src={tg?.icon} width="200px" height="200px" alt="" />
+                        <p>{tg?.name}</p>
+                        <p>{tg?.description}</p>
                     </Grid>)
                 }
             </Grid>
