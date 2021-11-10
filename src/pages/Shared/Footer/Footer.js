@@ -67,8 +67,8 @@ const Footer = () => {
                         Enter your email address below to subscribe to my newsletter. Get update surveys and offers
                     </Typography>
                     <Box>
-                        <TextField id="standard-basic" sx={{ width: '75%', my: '15px', color: '#fff' }} label="Your Email" type="email" variant="standard" />
-                        <Button sx={{ width: '75%', color: '#fff' }} variant="outlined">Subscribe</Button>
+                        <TextField id="standard-basic" sx={{ width: '75%', my: '15px' }} label="Your Email" type="email" variant="standard" />
+                        <Button sx={{ width: '75%', color: '#fff' }} variant="contained">Subscribe</Button>
                     </Box>
 
                 </Grid>

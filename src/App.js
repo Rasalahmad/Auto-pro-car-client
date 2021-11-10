@@ -5,6 +5,7 @@ import Register from './pages/Authentication/Register/Register';
 import Home from './pages/Home/Home/Home';
 import Review from './pages/Home/Review/Review';
 import Services from './pages/Home/Services/Services';
+import Technology from './pages/Home/Technology/Technology';
 import Footer from './pages/Shared/Footer/Footer';
 import Navigation from './pages/Shared/Navigation/Navigation';
 
@@ -22,6 +23,9 @@ function App() {
           </Route>
           <Route path='/services'>
           <Services></Services>
+          </Route>
+          <Route path='/technology'>
+          <Technology></Technology>
           </Route>
           <Route path='/review'>
           <Review></Review>
