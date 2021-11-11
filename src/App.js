@@ -9,6 +9,7 @@ import Home from './pages/Home/Home/Home';
 import Review from './pages/Home/Review/Review';
 import Services from './pages/Home/Services/Services';
 import Technology from './pages/Home/Technology/Technology';
+import UserDetails from './pages/Home/UserDetails/UserDetails';
 import Footer from './pages/Shared/Footer/Footer';
 import Navigation from './pages/Shared/Navigation/Navigation';
 import NotFound from './pages/Shared/NotFound/NotFound';
@@ -36,6 +37,9 @@ function App() {
           </Route>
           <Route path='/review'>
           <Review></Review>
+          </Route>
+          <Route path='/userDetails'>
+          <UserDetails></UserDetails>
           </Route>
           <Route path='/register'>
           <Register></Register>

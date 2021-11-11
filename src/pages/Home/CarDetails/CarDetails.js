@@ -8,6 +8,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { NavLink } from 'react-router-dom';
 
 
 const CarDetails = () => {
@@ -23,8 +24,8 @@ const CarDetails = () => {
     return (
         <Box>
             <Typography gutterBottom variant="h4" component="div" sx={{ my: "100px", fontWeight: 'bold' }}>
-                                <span style={{color: 'blue'}}>{details.name}'s</span> SPECIFICATION
-                            </Typography>
+                <span style={{ color: 'blue' }}>{details.name}'s</span> SPECIFICATION
+            </Typography>
             <Grid container spacing={2}>
                 <Grid item xs={8} md={6}>
                     <Card>
@@ -43,7 +44,9 @@ const CarDetails = () => {
                             </Typography>
                         </CardContent>
                         <CardActions>
-                            <Button size="small">Place Order</Button>
+                            <NavLink to={`/userDetails/${details._id}`}>
+                                <Button size="small">Place Order</Button>
+                            </NavLink>
                         </CardActions>
                     </Card>
                 </Grid>
