@@ -30,6 +30,7 @@ import AddReview from '../AddReview/AddReview';
 
 import DashboardHome from '../DashboardHome/DashboardHome';
 import MakeAdmin from './MakeAdmin/MakeAdmin';
+import useFirebase from '../../hooks/useFirebase';
 
 
 const drawerWidth = 200;
@@ -39,6 +40,7 @@ function Dashboard(props) {
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
     let { path, url } = useRouteMatch();
+    const { user, logOut, admin } = useFirebase();
 
 
     const handleDrawerToggle = () => {
@@ -48,7 +50,7 @@ function Dashboard(props) {
     const drawer = (
         <div>
             <Typography variant="h6" noWrap component="div">
-                {/* Login as {user.displayName} */}
+                {user.displayName}
             </Typography>
             <Toolbar />
             <Divider />
@@ -64,18 +66,19 @@ function Dashboard(props) {
                 <Button color="inherit">My Order</Button>
             </Link>
             <br />
-            <Link to={`${url}/addCar`}>
-                <Button color="inherit">Add Car</Button>
-            </Link>
-            <br />
             <Link to={`${url}/addReview`}>
                 <Button color="inherit">Your Review</Button>
             </Link>
-            <Link to={`${url}/makeAdmin`}>
-                <Button color="inherit">Add Admin</Button>
-            </Link>
-
-
+            <br />
+            {admin && <Box>
+                <Link to={`${url}/addCar`}>
+                    <Button color="inherit">Add Car</Button>
+                </Link>
+                <br />
+                <Link to={`${url}/makeAdmin`}>
+                    <Button color="inherit">Add Admin</Button>
+                </Link>
+            </Box>}
             <List>
                 {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
                     <ListItem button key={text}>
@@ -114,9 +117,15 @@ function Dashboard(props) {
                     <Typography variant="h6" noWrap component="div">
                         Dashboard
                     </Typography>
-                    <Typography variant="h6" sx={{textAlign: 'right', flexGrow: 1}} component="div">
-                        <Button variant="contained">Logout</Button>
+                    <Typography variant="h6" sx={{ textAlign: 'right', flexGrow: 1 }} component="div">
+                        {user.email &&
+                            <Button variant="contained" onClick={logOut}>Logout</Button>}
                     </Typography>
+                    <Link
+
+                        to='/home'>
+                        <Button sx={{ textAlign: 'right', color: '#fff' }} color="inherit">Go Home</Button>
+                    </Link>
                 </Toolbar>
             </AppBar>
             <Box

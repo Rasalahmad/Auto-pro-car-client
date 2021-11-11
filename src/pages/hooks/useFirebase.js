@@ -11,7 +11,7 @@ const useFirebase = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [authError, setAuthError] = useState('');
     const [admin, setAdmin] = useState(false);
-    const [token, setToken] = useState('');
+
 
     const auth = getAuth();
     const googleProvider = new GoogleAuthProvider();
@@ -21,19 +21,19 @@ const useFirebase = () => {
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 setAuthError('');
-                const newUser = {email, displayName: name}
+                const newUser = { email, displayName: name }
                 setUser(newUser);
                 // save user to database 
                 saveUser(email, name, 'POST')
                 updateProfile(auth.currentUser, {
                     displayName: name
-                  }).then(() => {
-                    
-                  }).catch((error) => {
+                }).then(() => {
+
+                }).catch((error) => {
                     // An error occurred
                     // ...
-                  });
-                  
+                });
+
                 history.replace('/');
             })
             .catch((error) => {
@@ -95,9 +95,9 @@ const useFirebase = () => {
             if (user) {
                 setUser(user)
                 getIdToken(user)
-                .then(idToken => {
-                    setToken(idToken)
-                })
+                    .then(idToken => {
+                        
+                    })
             } else {
                 setUser({});
             }
@@ -107,7 +107,7 @@ const useFirebase = () => {
     }, []);
 
     const saveUser = (email, displayName, method) => {
-        const user = {email, displayName}
+        const user = { email, displayName }
         fetch('http://localhost:5000/users', {
             method: method,
             headers: {
@@ -116,17 +116,16 @@ const useFirebase = () => {
             body: JSON.stringify(user)
         })
     }
-    useEffect( () => {
+    useEffect(() => {
         fetch(`http://localhost:5000/users/${user.email}`)
-        .then(res => res.json())
-        .then(data => setAdmin(data))
+            .then(res => res.json())
+            .then(data => setAdmin(data))
     }, [user.email])
 
     return {
         user,
         isLoading,
         admin,
-        token,
         authError,
         registerUser,
         signInWithGoogle,
