@@ -1,10 +1,11 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import './UserDetails.css';
-
+import useFirebase from '../../hooks/useFirebase';
 
 
 const UserDetails = () => {
+    const {user} = useFirebase();
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const onSubmit = data => {
     console.log(data);
@@ -28,8 +29,8 @@ const UserDetails = () => {
     return (
         <div>
             <form className = 'shipping-form' onSubmit={handleSubmit(onSubmit)}>
-            <input defaultValue="name" {...register("name")} />
-            <input defaultValue="name" {...register("email", { required: true })} />
+            <input defaultValue={user.displayName} {...register("name")} />
+            <input defaultValue={user.email} {...register("email", { required: true })} />
             {errors.email && <span className = 'error'>This field is required</span>}
             <input placeholder = 'Address' {...register("address")} />
             <input placeholder = 'City' {...register("city")} />
