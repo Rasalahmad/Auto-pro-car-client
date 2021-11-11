@@ -31,6 +31,7 @@ import AddReview from '../AddReview/AddReview';
 import DashboardHome from '../DashboardHome/DashboardHome';
 import MakeAdmin from './MakeAdmin/MakeAdmin';
 import useFirebase from '../../hooks/useFirebase';
+import AdminRoute from '../../Authentication/AdminRoute/AdminRoute';
 
 
 const drawerWidth = 200;
@@ -174,15 +175,15 @@ function Dashboard(props) {
                     <Route path={`${path}/payNow`}>
                         <PayNow></PayNow>
                     </Route>
-                    <Route path={`${path}/addCar`}>
+                    <AdminRoute path={`${path}/addCar`}>
                         <AddCar></AddCar>
-                    </Route>
+                    </AdminRoute>
                     <Route path={`${path}/addReview`}>
                         <AddReview></AddReview>
                     </Route>
-                    <Route path={`${path}/makeAdmin`}>
+                    <AdminRoute path={`${path}/makeAdmin`}>
                         <MakeAdmin></MakeAdmin>
-                    </Route>
+                    </AdminRoute>
                 </Switch>
             </Box>
         </Box>
