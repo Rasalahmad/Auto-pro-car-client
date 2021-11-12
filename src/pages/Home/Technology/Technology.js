@@ -18,11 +18,10 @@ const Technology = () => {
 
     return (
         <Box sx={{my: '100px'}}>
-            <Container/>
-            <Typography gutterBottom variant="h2" sx={{fontWeight: 'bold', my: '100px'}} component="div">
+            <Typography gutterBottom variant="h4" sx={{fontWeight: 'bold', my: '100px'}} component="div">
                 TECHNOLOGY
             </Typography>
-            <img src="http://autopro.jwsuperthemes.com/wp-content/uploads/2016/12/1111.jpg" alt="" />
+            <img src="http://autopro.jwsuperthemes.com/wp-content/uploads/2016/12/1111.jpg" width="100%" alt="" />
             <Grid container spacing={2} sx={{mt: "50px"}}>
                 {
                     technology.map(tg => <Grid

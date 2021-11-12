@@ -2,7 +2,6 @@ import React from 'react';
 import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MobileStepper from '@mui/material/MobileStepper';
-import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
@@ -15,9 +14,9 @@ const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const images = [
     {
-        label: 'San Francisco – Oakland Bay Bridge, United States',
+        label: 'Ferrari FXX K',
         imgPath:
-            'https://wallpaperaccess.com/download/ferrari-car-hd-534288',
+            'https://image.cnbcfm.com/api/v1/image/102251961-1.jpg?v=1418141376&w=929&h=523',
     },
     {
         label: 'Super Sports car is here',
@@ -25,12 +24,12 @@ const images = [
             'https://wallpapercave.com/wp/ppQthYS.jpg',
     },
     {
-        label: 'Bali, Indonesia',
+        label: 'Laravel KMC',
         imgPath:
             'https://wallpapercave.com/wp/sbQmWrR.jpg',
     },
     {
-        label: 'Goč, Serbia',
+        label: 'X Korola Super Brand',
         imgPath:
             'https://wallpapercave.com/wp/wp2024462.jpg',
     },

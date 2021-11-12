@@ -5,7 +5,8 @@ import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-
+import Rating from 'react-rating';
+import './Review.css'
 
 const Review = () => {
     const [collection, setCollection] = useState([]);
@@ -44,8 +45,13 @@ const Review = () => {
                                 <Typography variant="body2" color="text.secondary">
                                     {pd.description}
                                 </Typography>
-                                <Typography variant="body2" color="text.secondary">
-                                    {pd.rating}
+                                <Typography >
+                                    <Rating
+                                    className="rating"
+                                        initialRating={pd.rating}
+                                        emptySymbol="far fa-star icon-color"
+                                        fullSymbol="fas fa-star icon-color"
+                                    ></Rating>
                                 </Typography>
                             </CardContent>
                         </Card>

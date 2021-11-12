@@ -13,14 +13,14 @@ import Services from './pages/Home/Services/Services';
 import Technology from './pages/Home/Technology/Technology';
 import UserDetails from './pages/Home/UserDetails/UserDetails';
 import Footer from './pages/Shared/Footer/Footer';
-import Navigation from './pages/Shared/Navigation/Navigation';
+import Navbar from './pages/Shared/Navbar/Navbar';
 import NotFound from './pages/Shared/NotFound/NotFound';
 
 function App() {
   return (
-    <div className="App">
+    <div className="">
       <Router>
-      <Navigation></Navigation>
+      <Navbar></Navbar>
         <Switch>
           <Route exact path='/'>
           <Home></Home>
@@ -46,9 +46,9 @@ function App() {
           <Route path='/register'>
           <Register></Register>
           </Route>
-          <Route path='/dashboard'>
+          <PrivateRoute path='/dashboard'>
           <Dashboard></Dashboard>
-          </Route>
+          </PrivateRoute>
           <Route path='/explore'>
           <Explore></Explore>
           </Route>
