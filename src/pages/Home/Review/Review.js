@@ -11,7 +11,7 @@ import './Review.css'
 const Review = () => {
     const [collection, setCollection] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/review')
+        fetch('https://fierce-dusk-72833.herokuapp.com/review')
             .then(res => res.json())
             .then(data => {
                 setCollection(data);

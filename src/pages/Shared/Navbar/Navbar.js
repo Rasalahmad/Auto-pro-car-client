@@ -99,6 +99,9 @@ export default function Navbar() {
             <Box sx={{ flexGrow: 1 }}>
                 <AppBar position="static">
                     <Toolbar>
+                    <NavLink style={{ textDecoration: 'none', color: '#fff' }} to='/explore'>
+                        <Button color="inherit">Explore</Button>
+                    </NavLink>
                         <IconButton
                             size="large"
                             edge="start"
@@ -110,10 +113,7 @@ export default function Navbar() {
                         >
                             <MenuIcon />
                         </IconButton>
-                        <Typography className={navLogo} variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                            {user.displayName}
-                        </Typography>
-                        <Typography className={navLogo} variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                        <Typography className={navLogo} variant="h6" component="div" sx={{ flexGrow: 1, textAlign: 'center' }}>
                             AUTO-PRO
                         </Typography>
                         <Box className={navItemContainer}>
@@ -138,6 +138,9 @@ export default function Navbar() {
                             </NavLink> :
                                 <Button color="inherit" onClick={logOut}>Logout</Button>}
                         </Box>
+                         <Typography variant="h6" component="div">
+                            {user.displayName}
+                        </Typography>
                     </Toolbar>
                 </AppBar>
             </Box>

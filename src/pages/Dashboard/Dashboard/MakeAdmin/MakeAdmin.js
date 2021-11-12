@@ -10,7 +10,7 @@ const MakeAdmin = () => {
 
     const handleAdminSubmit = e => {
         const user = { email }
-        fetch('http://localhost:5000/users/admin', {
+        fetch('https://fierce-dusk-72833.herokuapp.com/users/admin', {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -20,7 +20,8 @@ const MakeAdmin = () => {
             .then(res => res.json())
             .then(result => {
                 if (result.modifiedCount) {
-                    console.log(result);
+                    alert('Added As Admin')
+                    console.log(result)
                     setSuccess(true)
                 }
             })

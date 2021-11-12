@@ -14,7 +14,7 @@ const ManageOrder = () => {
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/manageOrders`)
+        fetch(`https://fierce-dusk-72833.herokuapp.com/manageOrders`)
             .then(res => res.json())
             .then(data => {
                 setOrders(data);
@@ -22,7 +22,9 @@ const ManageOrder = () => {
     }, [user.email])
     
      const handleCancel = (id) => {
-        fetch(`http://localhost:5000/deleteOrder/${id}`, {
+        const proceed = window.confirm('Are you sure, you want to delete this order??')
+        if(proceed){
+            fetch(`https://fierce-dusk-72833.herokuapp.com/deleteOrder/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -34,10 +36,11 @@ const ManageOrder = () => {
                     setOrders(remaining);
                   }
             })
+        }
     }
     const handleApproved = (id) => {
          // console.log(id);
-         fetch(`http://localhost:5000/update/${id}`, {
+         fetch(`https://fierce-dusk-72833.herokuapp.com/update/${id}`, {
             method: "PUT",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(orders.status),
@@ -54,7 +57,7 @@ const ManageOrder = () => {
 
     return (
         <div>
-        <h2>Ordered List of <span style={{color: 'blue'}}>{user.displayName}</span></h2>
+        <h2>Ordered List</h2>
         <h2>Total Orders {orders.length}</h2>
         <TableContainer component={Paper}>
             <Table aria-label="Appoints Table">

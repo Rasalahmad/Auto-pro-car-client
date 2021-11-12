@@ -1,10 +1,18 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Project link [https://auto-pro-luxurious-car.web.app]
 
 ## Available Scripts
 
 In the project directory, you can run:
+This is a car selling website name AUTOPRO. In This website you can 
+
+* You can buy a product form this site giving your address.
+* You can manage this website as a admin if your role will admin
+* Here has some different functionality for both user and admin
+* Admin can add product, delete product, manage product and manage order
+* User also can see his/her all order in my order page
+
 
 ### `npm start`
 

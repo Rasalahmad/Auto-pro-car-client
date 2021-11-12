@@ -12,7 +12,7 @@ import { NavLink } from 'react-router-dom';
 const Services = () => {
     const [collection, setCollection] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/collection')
+        fetch('https://fierce-dusk-72833.herokuapp.com/collection')
             .then(res => res.json())
             .then(data => {
                 setCollection(data);

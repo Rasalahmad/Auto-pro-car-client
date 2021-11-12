@@ -18,7 +18,7 @@ const CarDetails = () => {
     const {user} = useFirebase();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/carDetails/${carId}`)
+        fetch(`https://fierce-dusk-72833.herokuapp.com/carDetails/${carId}`)
             .then(res => res.json())
             .then(data => {
                 setDetails(data)

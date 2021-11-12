@@ -19,7 +19,7 @@ const UserDetails = () => {
     const [service, setService] = useState({});
 
     useEffect(() => {
-        fetch(`http://localhost:5000/carDetails/${id}`)
+        fetch(`https://fierce-dusk-72833.herokuapp.com/carDetails/${id}`)
             .then(res => res.json())
             .then(data => {
                 setService(data)
@@ -30,7 +30,7 @@ const UserDetails = () => {
         console.log(data)
         data.service = service;
         data.status = 'Pending';
-        fetch('http://localhost:5000/saveUserInfo', {
+        fetch('https://fierce-dusk-72833.herokuapp.com/saveUserInfo', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

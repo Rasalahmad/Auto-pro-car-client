@@ -7,15 +7,14 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
-import useFirebase from '../../../hooks/useFirebase';
-import { Link } from 'react-router-dom';
+
 
 const ManageProduct = () => {
-    const { user } = useFirebase();
+    
     const [collection, setCollection] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/collection')
+        fetch('https://fierce-dusk-72833.herokuapp.com/collection')
             .then(res => res.json())
             .then(data => {
                 setCollection(data);
@@ -24,26 +23,26 @@ const ManageProduct = () => {
 
     const handleCancel = (id) => {
         const proceed = window.confirm('Are you sure, you want to delete this product!!')
-        if(proceed){
-            fetch(`http://localhost:5000/deleteProduct/${id}`, {
-            method: 'DELETE'
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                if (data.deletedCount) {
-                    alert('Your Order Cancel Successfully')
-                    const remaining = collection.filter(pd => pd._id !== id)
-                    setCollection(remaining);
-                }
+        if (proceed) {
+            fetch(`https://fierce-dusk-72833.herokuapp.com/deleteProduct/${id}`, {
+                method: 'DELETE'
             })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    if (data.deletedCount) {
+                        alert('Your Order Cancel Successfully')
+                        const remaining = collection.filter(pd => pd._id !== id)
+                        setCollection(remaining);
+                    }
+                })
         }
     }
 
     return (
         <div>
-            <h2>Ordered List of <span style={{ color: 'blue' }}>{user.displayName}</span></h2>
-            <h2>Total Orders {collection.length}</h2>
+            <h2>Product List</h2>
+            <h2>Total Products {collection.length}</h2>
             <TableContainer component={Paper}>
                 <Table aria-label="Appoints Table">
                     <TableHead>
@@ -70,8 +69,10 @@ const ManageProduct = () => {
                                 <TableCell align="center">{row?.color}</TableCell>
                                 <TableCell align="center">{row?.price}</TableCell>
                                 <TableCell align="center">
-                                    <Link to="/updateProduct">
-                                        <Button variant="contained" color="success" sx={{ mx: '7px', textDecoration: 'none' }}>Update</Button></Link>
+                                    {/* <Link to="/updateProduct"> */}
+                                        <Button variant="contained" color="success" sx={{ m: '7px'}}>Update</Button>
+                                        {/* </Link> */}
+                                        
                                     <Button variant="contained" color="error" onClick={() => handleCancel(row._id)}>Delete</Button>
                                 </TableCell>
                             </TableRow>
