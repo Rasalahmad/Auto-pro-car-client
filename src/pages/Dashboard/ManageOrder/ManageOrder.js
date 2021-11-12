@@ -82,7 +82,7 @@ const ManageOrder = () => {
                             <TableCell align="center">{row?.service?.color}</TableCell>
                             <TableCell align="center">{row?.service?.price}</TableCell>
                             <TableCell align="center">
-                                <Button variant="contained" color="success" sx={{mx: '7px'}}onClick={() => handleApproved(row._id)}>Approved</Button>
+                                <Button variant="contained" color="success" sx={{mx: '7px'}}onClick={() => handleApproved(row._id)}>Approve</Button>
                                 <Button variant="contained" color="error" onClick={() => handleCancel(row._id)}>Cancel</Button>
                             </TableCell>
                         </TableRow>

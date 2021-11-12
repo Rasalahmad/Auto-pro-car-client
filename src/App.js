@@ -4,6 +4,7 @@ import Login from './pages/Authentication/Login/Login';
 import PrivateRoute from './pages/Authentication/PrivateRoute/PrivateRoute';
 import Register from './pages/Authentication/Register/Register';
 import Dashboard from './pages/Dashboard/Dashboard/Dashboard';
+import UpdateProduct from './pages/Dashboard/UpdateProduct/UpdateProduct';
 import CarDetails from './pages/Home/CarDetails/CarDetails';
 import Explore from './pages/Home/Explore/Explore';
 import Home from './pages/Home/Home/Home';
@@ -50,6 +51,9 @@ function App() {
           </Route>
           <Route path='/explore'>
           <Explore></Explore>
+          </Route>
+          <Route path='/updateProduct'>
+          <UpdateProduct></UpdateProduct>
           </Route>
           <Route path='/login'>
           <Login></Login>
