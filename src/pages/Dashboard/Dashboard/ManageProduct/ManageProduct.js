@@ -23,7 +23,9 @@ const ManageProduct = () => {
     }, [])
 
     const handleCancel = (id) => {
-        fetch(`http://localhost:5000/deleteProduct/${id}`, {
+        const proceed = window.confirm('Are you sure, you want to delete this product!!')
+        if(proceed){
+            fetch(`http://localhost:5000/deleteProduct/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -35,6 +37,7 @@ const ManageProduct = () => {
                     setCollection(remaining);
                 }
             })
+        }
     }
 
     return (
@@ -68,7 +71,7 @@ const ManageProduct = () => {
                                 <TableCell align="center">{row?.price}</TableCell>
                                 <TableCell align="center">
                                     <Link to="/updateProduct">
-                                        <Button variant="contained" color="success" sx={{ mx: '7px', textDecoration: 'none'}}>Update</Button></Link>
+                                        <Button variant="contained" color="success" sx={{ mx: '7px', textDecoration: 'none' }}>Update</Button></Link>
                                     <Button variant="contained" color="error" onClick={() => handleCancel(row._id)}>Delete</Button>
                                 </TableCell>
                             </TableRow>
