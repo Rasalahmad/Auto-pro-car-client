@@ -39,7 +39,7 @@ function App() {
           <Route path='/review'>
           <Review></Review>
           </Route>
-          <PrivateRoute path='/userDetails'>
+          <PrivateRoute path='/userDetails/:id'>
           <UserDetails></UserDetails>
           </PrivateRoute>
           <Route path='/register'>

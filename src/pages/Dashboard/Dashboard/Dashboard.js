@@ -175,15 +175,15 @@ function Dashboard(props) {
                     <Route path={`${path}/payNow`}>
                         <PayNow></PayNow>
                     </Route>
-                    <AdminRoute path={`${path}/addCar`}>
+                    <Route path={`${path}/addCar`}>
                         <AddCar></AddCar>
-                    </AdminRoute>
+                    </Route>
                     <Route path={`${path}/addReview`}>
                         <AddReview></AddReview>
                     </Route>
-                    <AdminRoute path={`${path}/makeAdmin`}>
+                    <Route path={`${path}/makeAdmin`}>
                         <MakeAdmin></MakeAdmin>
-                    </AdminRoute>
+                    </Route>
                 </Switch>
             </Box>
         </Box>

@@ -9,22 +9,25 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { NavLink } from 'react-router-dom';
-
+import './CarDetails.css'
+import useFirebase from '../../hooks/useFirebase';
 
 const CarDetails = () => {
     const { carId } = useParams();
     const [details, setDetails] = useState([]);
+    const {user} = useFirebase();
+
     useEffect(() => {
         fetch(`http://localhost:5000/carDetails/${carId}`)
             .then(res => res.json())
             .then(data => {
                 setDetails(data)
             })
-    }, [carId])
+    }, [carId]);
     return (
         <Box>
             <Typography gutterBottom variant="h4" component="div" sx={{ my: "100px", fontWeight: 'bold' }}>
-                <span style={{ color: 'blue' }}>{details.name}'s</span> SPECIFICATION
+                <span style={{ color: 'blue' }}>{details?.name}'s</span> SPECIFICATION {user.displayName}
             </Typography>
             <Grid container spacing={2}>
                 <Grid item xs={8} md={6}>
@@ -33,19 +36,21 @@ const CarDetails = () => {
                             component="img"
                             alt="green iguana"
                             height="300"
-                            image={details.img}
+                            image={details?.img}
                         />
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="div">
                                 {details?.name}
                             </Typography>
                             <Typography variant="body2" color="text.secondary">
-                                Price ${details.price}
+                                Price ${details?.price}
                             </Typography>
                         </CardContent>
-                        <CardActions>
-                            <NavLink to={`/userDetails/${details._id}`}>
-                                <Button size="small">Place Order</Button>
+                        <CardActions className="cardAction">
+                            <NavLink 
+                            style={{ textDecoration: 'none', color: '#fff' }}
+                             to={`/userDetails/${details._id}`}>
+                                <Button size="small" variant="contained" color="success">Place Order</Button>
                             </NavLink>
                         </CardActions>
                     </Card>

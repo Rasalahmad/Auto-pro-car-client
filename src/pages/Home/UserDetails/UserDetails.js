@@ -1,43 +1,110 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import './UserDetails.css';
 import useFirebase from '../../hooks/useFirebase';
-
+import { useParams } from 'react-router';
+import Grid from '@mui/material/Grid';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import { NavLink } from 'react-router-dom';
 
 const UserDetails = () => {
-    const {user} = useFirebase();
+    const { id } = useParams();
+    const { user } = useFirebase();
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
-  const onSubmit = data => {
-    console.log(data);
-    fetch('http://localhost:5000/saveUserInfo', {
-        method: 'POST',
-        headers: {
-            'content-type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    })
-    .then(res => res.json())
-    .then(result => {
-        console.log(result);
-        if(result.insertedId){
-            alert('Order Process Successfully')
-            reset();
-        }
-    })
-      
+    const [service, setService] = useState({});
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/carDetails/${id}`)
+            .then(res => res.json())
+            .then(data => {
+                setService(data)
+            })
+    }, [id]);
+
+    const onSubmit = data => {
+        console.log(data)
+        data.name = service.name;
+        fetch('http://localhost:5000/saveUserInfo', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(result => {
+                console.log(result);
+                if (result.insertedId) {
+                    alert('Order Process Successfully')
+                    reset();
+                }
+            })
+
     };
+    // const handleCancel = (id) => {
+    //     fetch(`http://localhost:5000/deleteOrder/${id}`, {
+    //         method: 'DELETE'
+    //     })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             console.log(data);
+    //         })
+    // }
+
+     {/* <Box>
+                                <Button size="small" variant="contained" color="error" onClick={() => handleCancel(details._id)}>Cancel</Button>
+                            </Box> */}
+
     return (
         <div>
-            <form className = 'shipping-form' onSubmit={handleSubmit(onSubmit)}>
-            <input defaultValue={user.displayName} {...register("name")} />
-            <input defaultValue={user.email} {...register("email", { required: true })} />
-            {errors.email && <span className = 'error'>This field is required</span>}
-            <input placeholder = 'Address' {...register("address")} />
-            <input placeholder = 'City' {...register("city")} />
-            <input placeholder = 'Phone' {...register("phone")} />
-            <input type="submit" />
-            </form>
+            <Grid container spacing={2}>
+                <Grid item xs={12} md={6}>
+                    <form className='shipping-form' onSubmit={handleSubmit(onSubmit)}>
+                        <input value={user.displayName} {...register("userName")} />
+                        <input value={user.email} {...register("email", { required: true })} />
+                        {errors.email && <span className='error'>This field is required</span>}
+                        <input placeholder='Address' {...register("address")} />
+                        <input placeholder='City' {...register("city")} />
+                        <input placeholder='Phone' {...register("phone")} />
+                        <input value={service?.name} {...register("name")} disabled />
+                        <input value={service?.img} {...register("img")} disabled />
+                        <input value={service?.engine} {...register("engine")} disabled />
+                        <input value={service?.price} {...register("price")} disabled />
+                        <input type="submit" />
+                    </form>
+                </Grid>
+                <Grid item xs={12} md={6} sx={{ mt: '50px' }}>
+                    <Card>
+                        <CardMedia
+                            component="img"
+                            alt="green iguana"
+                            height="300"
+                            image={service?.img}
+                        />
+                        <CardContent>
+                            <Typography gutterBottom variant="h5" component="div">
+                                {service?.name}
+                            </Typography>
+                            <Typography variant="body2" color="text.secondary">
+                                Price ${service?.price}
+                            </Typography>
+                        </CardContent>
+                        <CardActions className="cardAction">
+                            <NavLink style={{ textDecoration: 'none', backgroundColor: 'warining' }} 
+                            to='/home'>
+                                <Button color="inherit">Back Home</Button>
+                            </NavLink>
+                        </CardActions>
+                    </Card>
+                </Grid>
+            </Grid>
         </div>
+
     );
 };
 
