@@ -9,12 +9,12 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 
-const MyOrder = () => {
+const ManageOrder = () => {
     const {user} = useFirebase();
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/orders?email=${user.email}`)
+        fetch(`http://localhost:5000/manageOrders`)
             .then(res => res.json())
             .then(data => {
                 setOrders(data);
@@ -35,6 +35,22 @@ const MyOrder = () => {
                   }
             })
     }
+    const handleApproved = (id) => {
+         // console.log(id);
+         fetch(`http://localhost:5000/update/${id}`, {
+            method: "PUT",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify(orders.status),
+          })
+            .then((res) => res.json())
+            .then((result) => {
+              if (result.modifiedCount) {
+                  alert('Approved')
+              } else {
+                  alert('Rejected');
+              }
+            });
+    }
 
     return (
         <div>
@@ -45,6 +61,7 @@ const MyOrder = () => {
                 <TableHead>
                     <TableRow>
                         <TableCell>Index</TableCell>
+                        <TableCell align="center">Email</TableCell>
                         <TableCell align="center">Name</TableCell>
                         <TableCell align="center">Color</TableCell>
                         <TableCell align="center">Price</TableCell>
@@ -60,11 +77,12 @@ const MyOrder = () => {
                             <TableCell component="th" scope="row">
                                 {[index+1]}
                             </TableCell>
+                            <TableCell align="center">{row?.email}</TableCell>
                             <TableCell align="center">{row?.service?.name}</TableCell>
                             <TableCell align="center">{row?.service?.color}</TableCell>
                             <TableCell align="center">{row?.service?.price}</TableCell>
                             <TableCell align="center">
-                                <Button variant="contained" color="warning" sx={{mx: '7px'}}>{row?.status}</Button>
+                                <Button variant="contained" color="success" sx={{mx: '7px'}}onClick={() => handleApproved(row._id)}>Approved</Button>
                                 <Button variant="contained" color="error" onClick={() => handleCancel(row._id)}>Cancel</Button>
                             </TableCell>
                         </TableRow>
@@ -76,4 +94,4 @@ const MyOrder = () => {
     );
 };
 
-export default MyOrder;
+export default ManageOrder;

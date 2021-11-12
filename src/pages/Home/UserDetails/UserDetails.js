@@ -15,7 +15,7 @@ import { NavLink } from 'react-router-dom';
 const UserDetails = () => {
     const { id } = useParams();
     const { user } = useFirebase();
-    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm({ mode: 'onBlur' });
     const [service, setService] = useState({});
 
     useEffect(() => {
@@ -28,7 +28,8 @@ const UserDetails = () => {
 
     const onSubmit = data => {
         console.log(data)
-        data.name = service.name;
+        data.service = service;
+        data.status = 'Pending';
         fetch('http://localhost:5000/saveUserInfo', {
             method: 'POST',
             headers: {
@@ -46,37 +47,23 @@ const UserDetails = () => {
             })
 
     };
-    // const handleCancel = (id) => {
-    //     fetch(`http://localhost:5000/deleteOrder/${id}`, {
-    //         method: 'DELETE'
-    //     })
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             console.log(data);
-    //         })
-    // }
 
-     {/* <Box>
-                                <Button size="small" variant="contained" color="error" onClick={() => handleCancel(details._id)}>Cancel</Button>
-                            </Box> */}
 
     return (
         <div>
             <Grid container spacing={2}>
                 <Grid item xs={12} md={6}>
-                    <form className='shipping-form' onSubmit={handleSubmit(onSubmit)}>
-                        <input value={user.displayName} {...register("userName")} />
-                        <input value={user.email} {...register("email", { required: true })} />
-                        {errors.email && <span className='error'>This field is required</span>}
-                        <input placeholder='Address' {...register("address")} />
-                        <input placeholder='City' {...register("city")} />
-                        <input placeholder='Phone' {...register("phone")} />
-                        <input value={service?.name} {...register("name")} disabled />
-                        <input value={service?.img} {...register("img")} disabled />
-                        <input value={service?.engine} {...register("engine")} disabled />
-                        <input value={service?.price} {...register("price")} disabled />
-                        <input type="submit" />
-                    </form>
+                    <div>
+                        <form className='shipping-form' onSubmit={handleSubmit(onSubmit)}>
+                            <input defaultValue={user.displayName} {...register("name")} />
+                            <input defaultValue={user.email} {...register("email", { required: true })} />
+                            {errors.email && <span className='error'>This field is required</span>}
+                            <input placeholder='Address' {...register("address")} />
+                            <input placeholder='City' {...register("city")} />
+                            <input placeholder='Phone' {...register("phone")} />
+                            <input type="submit" />
+                        </form>
+                    </div>
                 </Grid>
                 <Grid item xs={12} md={6} sx={{ mt: '50px' }}>
                     <Card>
@@ -95,8 +82,8 @@ const UserDetails = () => {
                             </Typography>
                         </CardContent>
                         <CardActions className="cardAction">
-                            <NavLink style={{ textDecoration: 'none', backgroundColor: 'warining' }} 
-                            to='/home'>
+                            <NavLink style={{ textDecoration: 'none', backgroundColor: 'warining' }}
+                                to='/home'>
                                 <Button color="inherit">Back Home</Button>
                             </NavLink>
                         </CardActions>

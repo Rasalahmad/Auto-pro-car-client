@@ -32,6 +32,7 @@ import DashboardHome from '../DashboardHome/DashboardHome';
 import MakeAdmin from './MakeAdmin/MakeAdmin';
 import useFirebase from '../../hooks/useFirebase';
 import AdminRoute from '../../Authentication/AdminRoute/AdminRoute';
+import ManageOrder from '../ManageOrder/ManageOrder';
 
 
 const drawerWidth = 200;
@@ -78,6 +79,10 @@ function Dashboard(props) {
                 <br />
                 <Link to={`${url}/makeAdmin`}>
                     <Button color="inherit">Add Admin</Button>
+                </Link>
+                <br />
+                <Link to={`${url}/manageOrders`}>
+                    <Button color="inherit">Manage Orders</Button>
                 </Link>
             </Box>}
             <List>
@@ -183,6 +188,9 @@ function Dashboard(props) {
                     </Route>
                     <Route path={`${path}/makeAdmin`}>
                         <MakeAdmin></MakeAdmin>
+                    </Route>
+                    <Route path={`${path}/manageOrders`}>
+                        <ManageOrder></ManageOrder>
                     </Route>
                 </Switch>
             </Box>
