@@ -12,7 +12,7 @@ const Technology = () => {
     const [technology, setTechnology] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/technology')
+        fetch('https://fierce-dusk-72833.herokuapp.com/technology')
             .then(res => res.json())
             .then(data => {
                 setTechnology(data)

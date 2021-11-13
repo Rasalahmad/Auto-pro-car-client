@@ -14,7 +14,7 @@ const ManageOrder = () => {
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/manageOrders`)
+        fetch(`https://fierce-dusk-72833.herokuapp.com/manageOrders`)
             .then(res => res.json())
             .then(data => {
                 setOrders(data);
@@ -24,7 +24,7 @@ const ManageOrder = () => {
      const handleCancel = (id) => {
         const proceed = window.confirm('Are you sure, you want to delete this order??')
         if(proceed){
-            fetch(`http://localhost:5000/deleteOrder/${id}`, {
+            fetch(`https://fierce-dusk-72833.herokuapp.com/deleteOrder/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -40,7 +40,7 @@ const ManageOrder = () => {
     }
     const handleApproved = (id) => {
          // console.log(id);
-         fetch(`http://localhost:5000/update/${id}`, {
+         fetch(`https://fierce-dusk-72833.herokuapp.com/update/${id}`, {
             method: "PUT",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(orders.status),

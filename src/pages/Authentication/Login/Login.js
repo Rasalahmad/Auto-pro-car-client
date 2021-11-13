@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {TextField, Container, Grid, Typography, Button, CircularProgress, Alert} from '@mui/material';
 
 import { NavLink, useLocation, useHistory } from 'react-router-dom';
-import useAuth from '../../hooks/useAuth';
 import useFirebase from '../../hooks/useFirebase';
 
 
