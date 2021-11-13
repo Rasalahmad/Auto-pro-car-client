@@ -11,7 +11,7 @@ const AddReview = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    fetch("https://fierce-dusk-72833.herokuapp.com/addReview", {
+    fetch("http://localhost:5000/addReview", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),
@@ -28,8 +28,8 @@ const AddReview = () => {
   };
   return (
     <div>
-      <div className="login-box w-25 m-auto mt-5">
         <h2 className="mt-5 text-center text-primary">Your Comment</h2>
+      <div className="login-box w-25 m-auto mt-5">
         <div className="event-box border border d-flex justify-content-center align-items-center">
           <div className="login-form">
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -46,7 +46,7 @@ const AddReview = () => {
                 className="p-2 m-2 w-100"
               />
               <br />
-              <textArea
+              <textarea
                 {...register("description")}
                 placeholder="Description"
                 className="p-2 m-2 w-100"
@@ -54,8 +54,8 @@ const AddReview = () => {
               <br />
               <input
                 type="number"
-                {...register("rating", { min: 0, max: 5 })}
-                placeholder="Rating"
+                {...register("rating", { min: 1, max: 5 })}
+                placeholder="Rating [0-5]"
                 className="p-2 m-2 w-100"
               />
               <br />

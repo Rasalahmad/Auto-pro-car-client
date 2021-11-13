@@ -10,15 +10,15 @@ import './Footer.css'
 const Footer = () => {
     return (
         <Box className='footer-container'>
-            <Grid container spacing={2}>
+            <Grid container spacing={2} className="container">
                 <Grid item xs={6} md={3}>
                     <Typography variant="h6" sx={{ fontWeight: 'bold', my: '20px' }} component="div">
                         CONTACT US
                     </Typography>
                     <Typography variant="body1" component="div">
                         <i className="fas fa-phone"></i> ++8018-362-990-90 <br />
-                        <i class="fas fa-map-marker"></i> VIP Road, Bandarban Saadar, Bandarban, Bangladesh <br />
-                        <i class="fas fa-envelope"></i> autopro@gmail.com
+                        <i className="fas fa-map-marker"></i> VIP Road, Bandarban Saadar, Bandarban, Bangladesh <br />
+                        <i className="fas fa-envelope"></i> autopro@gmail.com
                     </Typography>
                     <Typography variant="h6" sx={{ fontWeight: 'bold', mt: '20px' }} component="div">
                         CONNECT WITH SOCIAL MEDIA

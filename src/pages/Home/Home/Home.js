@@ -1,5 +1,5 @@
 import React from 'react';
-import Banner from '../Banner/Banner';
+import Carousel from '../Carousel/Carousel';
 import Review from '../Review/Review';
 import Services from '../Services/Services';
 import Technology from '../Technology/Technology';
@@ -7,7 +7,8 @@ import Technology from '../Technology/Technology';
 const Home = () => {
     return (
         <div>
-            <Banner></Banner>
+            {/* <Banner></Banner> */}
+            <Carousel></Carousel>
             <Services></Services>
             <Technology></Technology>
             <Review></Review>

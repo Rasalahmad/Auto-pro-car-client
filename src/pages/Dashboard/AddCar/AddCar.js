@@ -11,7 +11,7 @@ const AddCar = () => {
       } = useForm();
     
       const onSubmit = (data) => {
-        fetch("https://fierce-dusk-72833.herokuapp.com/addCar", {
+        fetch("http://localhost:5000/addCar", {
           method: "POST",
           headers: { "content-type": "application/json" },
           body: JSON.stringify(data),

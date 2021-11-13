@@ -21,7 +21,6 @@ import ListItemText from '@mui/material/ListItemText';
 export default function Navbar() {
     const { user, logOut } = useFirebase();
     const theme = useTheme();
-    console.log(user)
     const useStyle = makeStyles({
         navItem: {
             color: '#fff',

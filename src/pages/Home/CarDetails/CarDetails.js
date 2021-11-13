@@ -10,24 +10,23 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { NavLink } from 'react-router-dom';
 import './CarDetails.css'
-import useFirebase from '../../hooks/useFirebase';
+
 
 const CarDetails = () => {
     const { carId } = useParams();
     const [details, setDetails] = useState([]);
-    const {user} = useFirebase();
 
     useEffect(() => {
-        fetch(`https://fierce-dusk-72833.herokuapp.com/carDetails/${carId}`)
+        fetch(`http://localhost:5000/carDetails/${carId}`)
             .then(res => res.json())
             .then(data => {
                 setDetails(data)
             })
     }, [carId]);
     return (
-        <Box>
+        <Box className="container">
             <Typography gutterBottom variant="h4" component="div" sx={{ my: "100px", fontWeight: 'bold' }}>
-                <span style={{ color: 'blue' }}>{details?.name}'s</span> SPECIFICATION {user.displayName}
+                <span style={{ color: 'blue' }}>{details?.name}'s</span> SPECIFICATION
             </Typography>
             <Grid container spacing={2}>
                 <Grid item xs={8} md={6}>
@@ -56,7 +55,7 @@ const CarDetails = () => {
                     </Card>
                 </Grid>
                 <Grid item xs={4} md={6}>
-                    <table class="table">
+                    <table className="table">
                         <thead>
                             <tr>
                                 <th scope="col">Name</th>

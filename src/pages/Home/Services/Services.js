@@ -12,21 +12,21 @@ import { NavLink } from 'react-router-dom';
 const Services = () => {
     const [collection, setCollection] = useState([]);
     useEffect(() => {
-        fetch('https://fierce-dusk-72833.herokuapp.com/collection')
+        fetch('http://localhost:5000/collection')
             .then(res => res.json())
             .then(data => {
                 setCollection(data);
             })
-    }, [])
+    }, [collection])
     return (
-        <Box>
+        <Box className="container">
             <Typography variant="h4" sx={{ my: '50px' }} component="div">
                 Our Collection
             </Typography>
             <Grid container spacing={2}>
                 {
                     collection.slice(0, 6).map(pd => <Grid
-                        item xs={12} md={4}
+                        item xs={12} sm={6} md={4}
                         key={pd._id
                         }
                     >

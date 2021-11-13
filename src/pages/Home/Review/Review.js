@@ -11,21 +11,21 @@ import './Review.css'
 const Review = () => {
     const [collection, setCollection] = useState([]);
     useEffect(() => {
-        fetch('https://fierce-dusk-72833.herokuapp.com/review')
+        fetch('http://localhost:5000/review')
             .then(res => res.json())
             .then(data => {
                 setCollection(data);
             })
     }, [])
     return (
-        <Box>
+        <Box className="container">
             <Typography variant="h4" sx={{ my: '50px' }} component="div">
                 Clients Review
             </Typography>
             <Grid container spacing={2}>
                 {
                     collection.map(pd => <Grid
-                        item xs={12} md={4}
+                        item xs={12} sm={6}  md={4}
                         key={pd._id
                         }
                     >
