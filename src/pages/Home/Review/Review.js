@@ -61,7 +61,6 @@ const Review = () => {
                         </Grid>)
                     }
                 </Grid> :
-                    /* added skeleton */
                     <Box className="skeleton-loader">
                         <SkeletonDiv />
                         <SkeletonDiv />
