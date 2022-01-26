@@ -18,15 +18,6 @@ const Navigation = () => {
                     <NavLink style={{ textDecoration: 'none', color: '#fff' }} to='/explore'>
                         <Button color="inherit">Explore</Button>
                     </NavLink>
-                    {/* <IconButton
-                        size="large"
-                        edge="start"
-                        color="inherit"
-                        aria-label="menu"
-                        sx={{ mr: 2 }}
-                    >
-                        <MenuIcon />
-                    </IconButton> */}
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                         AUTOPRO
                     </Typography>
@@ -44,8 +35,8 @@ const Navigation = () => {
                     </NavLink>
                     {user.email &&
                         <NavLink style={{ textDecoration: 'none', color: '#fff' }} to='/dashboard'>
-                        <Button color="inherit">Dashboard</Button>
-                    </NavLink>}
+                            <Button color="inherit">Dashboard</Button>
+                        </NavLink>}
                     {!user.email ? <NavLink style={{ textDecoration: 'none', color: '#fff' }} to='/login'>
                         <Button color="inherit">Login</Button>
                     </NavLink> :

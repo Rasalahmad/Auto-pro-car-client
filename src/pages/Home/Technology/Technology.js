@@ -6,16 +6,19 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { CardActionArea } from '@mui/material';
-// import './Technology.css';
+import SkeletonDiv from '../../Shared/SkeletonDiv';
+import "../../Home/Services/Services.css";
 
 const Technology = () => {
     const [technology, setTechnology] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         fetch('https://fierce-dusk-72833.herokuapp.com/technology')
             .then(res => res.json())
             .then(data => {
-                setTechnology(data)
+                setTechnology(data);
+                setLoading(false);
             })
     }, [])
 
@@ -25,34 +28,45 @@ const Technology = () => {
                 TECHNOLOGY
             </Typography>
             <img src="http://autopro.jwsuperthemes.com/wp-content/uploads/2016/12/1111.jpg" width="100%" alt="" />
-            <Grid container spacing={2} sx={{ mt: "50px" }}>
-                {
-                    technology.map(tg => <Grid
-                        key={tg._id}
-                        item xs={12} sm={6} md={4}
-                        className="tech-card"
-                    >
-                        <Card sx={{ maxWidth: 345 }}>
-                            <CardActionArea>
-                                <CardMedia
-                                    component="img"
-                                    height="140"
-                                    image={tg?.icon}
-                                    alt="green iguana"
-                                />
-                                <CardContent>
-                                    <Typography gutterBottom variant="h5" component="div">
-                                    {tg?.name}
-                                    </Typography>
-                                    <Typography variant="body2" color="text.secondary">
-                                    {tg?.description.slice(0, 150)}
-                                    </Typography>
-                                </CardContent>
-                            </CardActionArea>
-                        </Card>
-                    </Grid>)
-                }
-            </Grid>
+            <Box className="serviceContainer">
+                {loading ?
+                    <Box className="skeleton-loader">
+                        <SkeletonDiv />
+                        <SkeletonDiv />
+                        <SkeletonDiv />
+                        <SkeletonDiv />
+                        <SkeletonDiv />
+                        <SkeletonDiv />
+                    </Box> :
+                    <Grid container spacing={2} sx={{ mt: "50px" }}>
+                        {
+                            technology.map(tg => <Grid
+                                key={tg._id}
+                                item xs={12} sm={6} md={4}
+                                className="tech-card"
+                            >
+                                <Card sx={{ maxWidth: 345 }}>
+                                    <CardActionArea>
+                                        <CardMedia
+                                            component="img"
+                                            height="140"
+                                            image={tg?.icon}
+                                            alt="green iguana"
+                                        />
+                                        <CardContent>
+                                            <Typography gutterBottom variant="h5" component="div">
+                                                {tg?.name}
+                                            </Typography>
+                                            <Typography variant="body2" color="text.secondary">
+                                                {tg?.description.slice(0, 150)}
+                                            </Typography>
+                                        </CardContent>
+                                    </CardActionArea>
+                                </Card>
+                            </Grid>)
+                        }
+                    </Grid>}
+            </Box>
         </Box>
     );
 };

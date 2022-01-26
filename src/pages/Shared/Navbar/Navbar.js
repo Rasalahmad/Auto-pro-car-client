@@ -74,19 +74,19 @@ export default function Navbar() {
                 </ListItem>
                 {user.email &&
                     <ListItem button>
-                    <ListItemText>
-                        <Link to="/dashboard">Dashboard</Link>
-                    </ListItemText>
-                </ListItem>}
-               {!user.email ?
-                <ListItem button>
-                    <ListItemText>
-                        <Link to="/login">Login</Link>
-                    </ListItemText>
-                </ListItem>:
-                <ListItem button>
-                    <Button onClick={logOut}>LogOut</Button>
-                </ListItem>}
+                        <ListItemText>
+                            <Link to="/dashboard">Dashboard</Link>
+                        </ListItemText>
+                    </ListItem>}
+                {!user.email ?
+                    <ListItem button>
+                        <ListItemText>
+                            <Link to="/login">Login</Link>
+                        </ListItemText>
+                    </ListItem> :
+                    <ListItem button>
+                        <Button onClick={logOut}>LogOut</Button>
+                    </ListItem>}
             </List>
             <Divider />
         </Box>
@@ -98,9 +98,9 @@ export default function Navbar() {
             <Box sx={{ flexGrow: 1 }}>
                 <AppBar position="static">
                     <Toolbar>
-                    <NavLink style={{ textDecoration: 'none', color: '#fff' }} to='/explore'>
-                        <Button color="inherit">Explore</Button>
-                    </NavLink>
+                        <NavLink style={{ textDecoration: 'none', color: '#fff' }} to='/explore'>
+                            <Button color="inherit">Explore</Button>
+                        </NavLink>
                         <IconButton
                             size="large"
                             edge="start"
@@ -137,8 +137,8 @@ export default function Navbar() {
                             </NavLink> :
                                 <Button color="inherit" onClick={logOut}>Logout</Button>}
                         </Box>
-                         <Typography variant="h6" component="div">
-                            {user.displayName}
+                        <Typography variant="h6" component="div">
+                            <img style={{ width: '40px', borderRadius: '50%' }} src={user?.photoURL} alt="" />
                         </Typography>
                     </Toolbar>
                 </AppBar>

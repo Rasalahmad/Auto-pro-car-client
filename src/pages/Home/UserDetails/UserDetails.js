@@ -11,6 +11,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { NavLink } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const UserDetails = () => {
     const { id } = useParams();
@@ -24,7 +25,7 @@ const UserDetails = () => {
             .then(data => {
                 setService(data)
             })
-    }, [id]);
+    }, [service, id]);
 
     const onSubmit = data => {
         console.log(data)
@@ -41,7 +42,13 @@ const UserDetails = () => {
             .then(result => {
                 console.log(result);
                 if (result.insertedId) {
-                    alert('Order Process Successfully')
+                    // alert('Order Process Successfully');
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Your Order Placed Successfully!!',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
                     reset();
                 }
             })

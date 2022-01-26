@@ -8,6 +8,10 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import { Box } from '@mui/system';
+import Swal from 'sweetalert2';
+
 
 const MyOrder = () => {
     const { user } = useFirebase();
@@ -22,20 +26,45 @@ const MyOrder = () => {
     }, [user.email])
 
     const handleCancel = (id) => {
+
+        // Swal.fire({
+        //     title: 'Are you sure?',
+        //     text: "You won't be able to revert this!",
+        //     icon: 'warning',
+        //     showCancelButton: true,
+        //     confirmButtonColor: '#3085d6',
+        //     cancelButtonColor: '#d33',
+        //     confirmButtonText: 'Yes, delete it!'
+        // }).then((result) => {
+        //     if (result.isConfirmed) {
+        //         Swal.fire(
+        //             'Deleted!',
+        //             'Your file has been deleted.',
+        //             'success'
+        //         )
+        //     }
+        // })
+
+
         const proceed = window.confirm('Are your sure, you want to delete this item??')
-        if(proceed){
+        if (proceed) {
             fetch(`https://fierce-dusk-72833.herokuapp.com/deleteOrder/${id}`, {
-            method: 'DELETE'
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                if (data.deletedCount) {
-                    alert('Your Order Cancel Successfully')
-                    const remaining = orders.filter(pd => pd._id !== id)
-                    setOrders(remaining);
-                }
+                method: 'DELETE'
             })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    if (data.deletedCount) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Your Order Cancel Successfully!!',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        const remaining = orders.filter(pd => pd._id !== id)
+                        setOrders(remaining);
+                    }
+                })
         }
     }
 
@@ -67,8 +96,13 @@ const MyOrder = () => {
                                 <TableCell align="center">{row?.service?.color}</TableCell>
                                 <TableCell align="center">{row?.service?.price}</TableCell>
                                 <TableCell align="center">
-                                    <Button variant="contained" color="warning" sx={{ mx: '7px' }}>{row?.status}</Button>
-                                    <Button variant="contained" color="error" onClick={() => handleCancel(row._id)}>Cancel</Button>
+                                    {row?.status === 'Pending' ? <Box>
+                                        <Typography variant="body1" sx={{ color: 'goldenrod', display: 'inline', p: '5px' }}>{row?.status}</Typography>
+                                        <Button variant="contained" color="error" onClick={() => handleCancel(row._id)}>Cancel</Button>
+                                    </Box>
+                                        :
+                                        <Typography variant="body1" sx={{ color: 'green' }}>{row?.status}</Typography>
+                                    }
                                 </TableCell>
                             </TableRow>
                         ))}

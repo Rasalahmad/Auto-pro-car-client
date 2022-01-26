@@ -18,48 +18,48 @@ import NotFound from './pages/Shared/NotFound/NotFound';
 
 function App() {
   return (
-    <div className="">
+    <div className="App">
       <Router>
-      <Navbar></Navbar>
+        <Navbar></Navbar>
         <Switch>
           <Route exact path='/'>
-          <Home></Home>
+            <Home></Home>
           </Route>
           <Route path='/home'>
-          <Home></Home>
+            <Home></Home>
           </Route>
           <Route path='/services'>
-          <Services></Services>
+            <Services></Services>
           </Route>
           <Route path='/carDetails/:carId'>
-          <CarDetails></CarDetails>
+            <CarDetails></CarDetails>
           </Route>
           <Route path='/technology'>
-          <Technology></Technology>
+            <Technology></Technology>
           </Route>
           <Route path='/review'>
-          <Review></Review>
+            <Review></Review>
           </Route>
           <PrivateRoute path='/userDetails/:id'>
-          <UserDetails></UserDetails>
+            <UserDetails></UserDetails>
           </PrivateRoute>
           <Route path='/register'>
-          <Register></Register>
+            <Register></Register>
           </Route>
           <PrivateRoute path='/dashboard'>
-          <Dashboard></Dashboard>
+            <Dashboard></Dashboard>
           </PrivateRoute>
           <Route path='/explore'>
-          <Explore></Explore>
+            <Explore></Explore>
           </Route>
           <Route path='/updateProduct'>
-          <UpdateProduct></UpdateProduct>
+            <UpdateProduct></UpdateProduct>
           </Route>
           <Route path='/login'>
-          <Login></Login>
+            <Login></Login>
           </Route>
           <Route path='*'>
-          <NotFound></NotFound>
+            <NotFound></NotFound>
           </Route>
         </Switch>
         <Footer></Footer>

@@ -8,7 +8,7 @@ const AddReview = () => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm();
+  } = useForm({ mode: 'onBlur' });
 
   const onSubmit = (data) => {
     fetch("https://fierce-dusk-72833.herokuapp.com/addReview", {
@@ -58,6 +58,7 @@ const AddReview = () => {
                 placeholder="Rating [0-5]"
                 className="p-2 m-2 w-100"
               />
+              {errors.exampleRequired && <span>This field is required</span>}
               <br />
               <input
                 {...register("img", { required: true })}
