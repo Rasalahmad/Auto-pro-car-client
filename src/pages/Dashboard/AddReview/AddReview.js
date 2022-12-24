@@ -11,7 +11,7 @@ const AddReview = () => {
   } = useForm({ mode: 'onBlur' });
 
   const onSubmit = (data) => {
-    fetch("https://fierce-dusk-72833.herokuapp.com/addReview", {
+    fetch("http://localhost:5000/addReview", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),

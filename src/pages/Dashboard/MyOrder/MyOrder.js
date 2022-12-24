@@ -18,7 +18,7 @@ const MyOrder = () => {
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
-        fetch(`https://fierce-dusk-72833.herokuapp.com/orders?email=${user.email}`)
+        fetch(`http://localhost:5000/orders?email=${user.email}`)
             .then(res => res.json())
             .then(data => {
                 setOrders(data);
@@ -48,7 +48,7 @@ const MyOrder = () => {
 
         const proceed = window.confirm('Are your sure, you want to delete this item??')
         if (proceed) {
-            fetch(`https://fierce-dusk-72833.herokuapp.com/deleteOrder/${id}`, {
+            fetch(`http://localhost:5000/deleteOrder/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())

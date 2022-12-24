@@ -13,6 +13,7 @@ import Services from './pages/Home/Services/Services';
 import Technology from './pages/Home/Technology/Technology';
 import UserDetails from './pages/Home/UserDetails/UserDetails';
 import Footer from './pages/Shared/Footer/Footer';
+import Success from './pages/Shared/Message/Success';
 import Navbar from './pages/Shared/Navbar/Navbar';
 import NotFound from './pages/Shared/NotFound/NotFound';
 
@@ -48,6 +49,9 @@ function App() {
           </Route>
           <PrivateRoute path='/dashboard'>
             <Dashboard></Dashboard>
+          </PrivateRoute>
+          <PrivateRoute path='/success'>
+            <Success />
           </PrivateRoute>
           <Route path='/explore'>
             <Explore></Explore>

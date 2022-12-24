@@ -14,7 +14,7 @@ const ManageProduct = () => {
     const [collection, setCollection] = useState([]);
 
     useEffect(() => {
-        fetch('https://fierce-dusk-72833.herokuapp.com/collection')
+        fetch('http://localhost:5000/collection')
             .then(res => res.json())
             .then(data => {
                 setCollection(data);
@@ -24,7 +24,7 @@ const ManageProduct = () => {
     const handleCancel = (id) => {
         const proceed = window.confirm('Are you sure, you want to delete this product!!')
         if (proceed) {
-            fetch(`https://fierce-dusk-72833.herokuapp.com/deleteProduct/${id}`, {
+            fetch(`http://localhost:5000/deleteProduct/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
