@@ -25,7 +25,7 @@ const UserDetails = () => {
   const [service, setService] = useState({});
 
   useEffect(() => {
-    fetch(`http://localhost:5000/carDetails/${id}`)
+    fetch(`https://car-service-psi.vercel.app/carDetails/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setService(data);
@@ -36,7 +36,7 @@ const UserDetails = () => {
     console.log(data);
     data.service = service;
     data.status = "Pending";
-    fetch("http://localhost:5000/init", {
+    fetch("https://car-service-psi.vercel.app/init", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -45,7 +45,7 @@ const UserDetails = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        window.location.replace(result)
+        window.location.replace(result);
       });
   };
 

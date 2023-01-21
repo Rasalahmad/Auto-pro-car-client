@@ -14,7 +14,7 @@ const Review = () => {
   const [collection, setCollection] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    fetch("http://localhost:5000/review")
+    fetch("https://car-service-psi.vercel.app/review")
       .then((res) => res.json())
       .then((data) => {
         setCollection(data);
@@ -31,7 +31,7 @@ const Review = () => {
           <Grid container spacing={2}>
             {collection.map((pd) => (
               <Grid item xs={12} sm={6} md={4} key={pd._id}>
-                <Card sx={{ maxWidth: 345, m: '20px auto' }}>
+                <Card sx={{ maxWidth: 345, m: "20px auto" }}>
                   <CardMedia
                     component="img"
                     alt="green iguana"

@@ -15,7 +15,7 @@ const Services = () => {
   const [collection, setCollection] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    fetch("http://localhost:5000/collection")
+    fetch("https://car-service-psi.vercel.app/collection")
       .then((res) => res.json())
       .then((data) => {
         setCollection(data);

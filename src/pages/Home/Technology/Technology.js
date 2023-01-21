@@ -14,7 +14,7 @@ const Technology = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:5000/technology")
+    fetch("https://car-service-psi.vercel.app/technology")
       .then((res) => res.json())
       .then((data) => {
         setTechnology(data);

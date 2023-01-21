@@ -1,6 +1,5 @@
-import React from 'react';
-import { useForm } from 'react-hook-form';
-
+import React from "react";
+import { useForm } from "react-hook-form";
 
 const AddReview = () => {
   const {
@@ -8,27 +7,26 @@ const AddReview = () => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm({ mode: 'onBlur' });
+  } = useForm({ mode: "onBlur" });
 
   const onSubmit = (data) => {
-    fetch("http://localhost:5000/addReview", {
+    fetch("https://car-service-psi.vercel.app/addReview", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log(result)
+        console.log(result);
         if (result.insertedId) {
-          alert('Palace Review Successfully!! Thank Your');
+          alert("Palace Review Successfully!! Thank Your");
           reset();
         }
       });
-
   };
   return (
     <div>
-        <h2 className="mt-5 text-center text-primary">Your Comment</h2>
+      <h2 className="mt-5 text-center text-primary">Your Comment</h2>
       <div className="login-box w-25 m-auto mt-5">
         <div className="event-box border border d-flex justify-content-center align-items-center">
           <div className="login-form">
@@ -67,7 +65,11 @@ const AddReview = () => {
               />
               {errors.exampleRequired && <span>This field is required</span>}
 
-              <input type="submit" value="Add Review" className="btn btn-info w-50" />
+              <input
+                type="submit"
+                value="Add Review"
+                className="btn btn-info w-50"
+              />
             </form>
           </div>
         </div>
